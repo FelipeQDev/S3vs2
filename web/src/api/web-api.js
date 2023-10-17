@@ -1,26 +1,31 @@
-import axios from 'axios'
+import axios from "axios";
 
 const infoAPI = axios.create({
-    baseURL: "http://localhost:8000/inicio/api/v1/app/"
+  baseURL: "http://localhost:8000/inicio/api/v1"
 });
 
-
 /* Archivos */
-export const getAllArchivos = () => {
-    return infoAPI.get("/");
-};
+export const getAllArchivos = () => infoAPI.get("archivos/");
 
-export const getArchivo = (id) => {
-    return infoAPI.get(`${id}/`);
-};
 
+export const getArchivo = (id) => infoAPI.get(`/archivos/${id}/`);
+
+
+export const createArchivo = (archivo) => infoAPI.post("archivos/", archivo);
+
+
+export const deleteArchivo = (id) => infoAPI.delete(`/archivos/${id}/`);
+
+export const updateArchivo = (id, archivo) => infoAPI.put(`/archivos/${id}`, archivo);
 
 /* Datos */
 
-export const getAllDatos = () => {
-    return infoAPI.get("/");
-};
+export const getAllDatos = () => infoAPI.get("datos/");
 
-export const getDato = () => {
-    return infoAPI.get(`${id}/`);
-};
+export const getDato = () => infoAPI.get(`/datos/${id}/`);
+
+export const createDato = (dato) => infoAPI.post("datos/", dato);
+  
+export const deleteDato = (id) => infoAPI.delete(`/datos/${id}/`);
+  
+export const updateDato = (id, dato) => infoAPI.put(`/datos/${id}`, dato);

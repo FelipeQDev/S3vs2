@@ -5,12 +5,12 @@ from app import views
 
 
 router = routers.DefaultRouter()
-router.register(r'archivos/', views.ArchivosViews, 'archivos')
-router.register(r'datos/', views.DatosViews, 'datos')
+router.register(r'archivos', views.ArchivosViews, 'archivos')
+router.register(r'datos', views.DatosViews, 'datos')
 
 
 # GET, POST, PUT, DELETE y documentacion
 urlpatterns = [
     path('api/v1/',include(router.urls)),
-    path("docs/", include_docs_urls(title="API"))
+    path('docs/', include_docs_urls(title="API"))
 ]

@@ -71,7 +71,7 @@ export function ArchivosFormPage() {
         <Form.Control type="text" {...register("nombre", { required: true })} />
         {errors.nombre && <span>Requiere un Nombre</span>}
         <Form.Label>Seleccione el Archivo</Form.Label>
-        <Form.Control type="file" {...register("nombre", { required: true })} />
+        <Form.Control type="file" {...register("archivo", { touched: true })} />
         <Button variant="primary" type="submit">
           Guardar
         </Button>
@@ -83,11 +83,11 @@ export function ArchivosFormPage() {
               if (confirmacion) {
                 await deleteArchivo(params.id);
                 toast.error("Archivo Eliminado", {
-                  position: "bottom=right",
+                  position: "bottom-right",
                   style: {
                     borderRadius: "10px",
-                    background: "#243B55",
-                    color: "#ffff"
+                    background: "#ffff",
+                    color: "#243B55"
                   }
                 });
               }

@@ -31,15 +31,11 @@ export function DatosList() {
           <th>Descripcion</th>
         </tr>
       </thead>
-      {datos.id?.map((dato) => (
+      {datos.map((dato) => (
         <tbody key={dato.id}>
           <tr>
-            <td>
-              <RenderDatos dato={dato} />
-            </td>
-            <td>
-              <RenderDatos dato={dato} />
-            </td>
+            <td><RenderDatos dato={dato} /></td>
+            <td>{dato.descripcion}</td>
           </tr>
         </tbody>
       ))}

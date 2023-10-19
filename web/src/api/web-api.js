@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const BASE_URL = "http://localhost:8000/inicio/api/v1";
+
 const infoAPI = axios.create({
-  baseURL: "http://localhost:8000/inicio/api/v1"
+  baseURL: BASE_URL
 });
 
 /* Archivos */

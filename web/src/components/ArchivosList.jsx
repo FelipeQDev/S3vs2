@@ -5,7 +5,7 @@ import Table from 'react-bootstrap/Table';
 import Button from "react-bootstrap/Button";
 
 import { RenderArchivos } from "./RenderArchivos";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 /* Listar Archivos */
@@ -24,15 +24,15 @@ export function ArchivosList() {
       }
     }
     cargarArchivos();
-  });
+  }, []);
+
   return (
-    
     <Table striped bordered hover>
       <thead>
         <tr>
           <th>Nombre</th>
-          <th>Archivo</th>
-          <th>Accion</th>
+          <th>Ruta de Alojaminto</th>
+          <th>Editar/Borrar</th>
         </tr>
       </thead>
       {archivos.map((archivo) => (
@@ -40,6 +40,8 @@ export function ArchivosList() {
             <tr>
               <td>
                 <RenderArchivos archivo={archivo} />
+                {archivo.nombre}
+
               </td>
               <td>
                 {archivo.archivo}

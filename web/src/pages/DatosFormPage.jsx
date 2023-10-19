@@ -11,7 +11,7 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 
 export function DatosFormPage() {
-  const { register, handleSubmit, setValue, formState: errors } = useForm();
+  const { register, handleSubmit, setValue } = useForm();
 
   const navigate = useNavigate();
   const params = useParams();
@@ -20,7 +20,7 @@ export function DatosFormPage() {
     if (params.id) {
       await updateDato(params.id, data);
       toast.success("Dato Actualizado", {
-        position: "bottom-right",
+        position: "bottom-center",
         style: {
           borderRadius: "10px",
           background: "#243B55",
@@ -30,7 +30,7 @@ export function DatosFormPage() {
     } else {
       await createDato(data);
       toast.success("Dato Creado", {
-        position: "bottom-right",
+        position: "bottom-center",
         style: {
           borderRadius: "10px",
           background: "#243B55",
@@ -64,7 +64,6 @@ export function DatosFormPage() {
             placeholder="Nombre"
             {...register("nombre", { required: true })}
           />
-          {errors.nombre && <span>Requiere un Nombre</span>}
           <Form.Label>Descripcion</Form.Label>
           <Form.Control
             id="formdato2"
@@ -72,7 +71,8 @@ export function DatosFormPage() {
             placeholder="Descripcion"
             {...register("descripcion", { required: true })}
           />
-          {errors.descripcion && <span>Descripcion es requerido</span>}
+
+        </Form.Group>
           <Button variant="primary" type="submit">
             Guardar
           </Button>
@@ -84,7 +84,7 @@ export function DatosFormPage() {
                 if (confirmacion) {
                   await deleteDato(params.id);
                   toast.error("Dato Eliminado", {
-                    position: "bottom-right",
+                    position: "bottom-center",
                     style: {
                       borderRadius: "10px",
                       background: "#243B55",
@@ -98,7 +98,6 @@ export function DatosFormPage() {
               Borrar
             </Button>
           )}
-        </Form.Group>
       </Form>
     </Container>
   );

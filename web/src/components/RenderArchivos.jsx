@@ -3,8 +3,8 @@ import Button from "react-bootstrap/Button";
 
 export function RenderArchivos(archivo) {
   return (
-    <td>
+    <div>
       {archivo.nombre}
-    </td>
+    </div>
   );
 }

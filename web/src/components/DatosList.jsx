@@ -6,9 +6,10 @@ import Table from "react-bootstrap/Table";
 
 import { RenderDatos } from "./RenderDatos";
 
+
 /* Listar Archivos */
 export function DatosList() {
-  /* guardar primer elemento en archivos y actualizar la lista */
+  /* guardar primer elemento en datos y actualizar la lista */
   const [datos, setDatos] = useState([]);
   useEffect(() => {
     async function cargarDatos() {

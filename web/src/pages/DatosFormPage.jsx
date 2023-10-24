@@ -11,7 +11,11 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 
 export function DatosFormPage() {
-  const { register, handleSubmit, setValue } = useForm();
+  const { 
+    egister, 
+    handleSubmit, 
+    setValue } 
+    = useForm();
 
   const navigate = useNavigate();
   const params = useParams();
@@ -54,7 +58,7 @@ export function DatosFormPage() {
   }, []);
 
   return (
-    <Container>
+    <Container className="my-4">
       <Form onSubmit={onSubmit}>
         <Form.Group className="mb-3">
           <Form.Label>Nombre</Form.Label>
@@ -71,33 +75,32 @@ export function DatosFormPage() {
             placeholder="Descripcion"
             {...register("descripcion", { required: true })}
           />
-
         </Form.Group>
-          <Button variant="primary" type="submit">
-            Guardar
-          </Button>
+        <Button variant="primary" type="submit">
+          Guardar
+        </Button>
 
-          {params.id && (
-            <Button
-              onClick={async () => {
-                const confirmacion = window.confirm("¿Esta Seguro?");
-                if (confirmacion) {
-                  await deleteDato(params.id);
-                  toast.error("Dato Eliminado", {
-                    position: "bottom-center",
-                    style: {
-                      borderRadius: "10px",
-                      background: "#243B55",
-                      color: "#ffff"
-                    }
-                  });
-                }
-                navigate("/datos");
-              }}
-            >
-              Borrar
-            </Button>
-          )}
+        {params.id && (
+          <Button
+            onClick={async () => {
+              const confirmacion = window.confirm("¿Esta Seguro?");
+              if (confirmacion) {
+                await deleteDato(params.id);
+                toast.error("Dato Eliminado", {
+                  position: "bottom-center",
+                  style: {
+                    borderRadius: "10px",
+                    background: "#243B55",
+                    color: "#ffff"
+                  }
+                });
+              }
+              navigate("/datos");
+            }}
+          >
+            Borrar
+          </Button>
+        )}
       </Form>
     </Container>
   );

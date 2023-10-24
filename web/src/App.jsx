@@ -19,9 +19,11 @@ export default function App() {
           <Route path="/" element={<Navigate to="/bienvenida" />} />
           <Route path="/bienvenida" element={<Bienvenida/>} />
           <Route path="/archivos" element={<ArchivosPage/>} />
-          <Route path="/crear-archivos" element={<ArchivosFormPage/>} />
+          <Route path="/archivos/:id" element={<ArchivosFormPage/>} />
+          <Route path="/archivos-crear" element={<ArchivosFormPage/>} />
           <Route path="/datos" element={<DatosPage/>} />
-          <Route path="/crear-datos" element={<DatosFormPage/>} />
+          <Route path="/datos/:id" element={<DatosFormPage/>} />
+          <Route path="/datos-crear" element={<DatosFormPage/>} />
         </Routes>
       </BrowserRouter>
     </div>

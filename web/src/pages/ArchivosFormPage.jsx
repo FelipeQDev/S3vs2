@@ -68,10 +68,16 @@ export function ArchivosFormPage() {
     <Form onSubmit={onSubmit}>
       <Form.Group className="mb-3">
         <Form.Label>Nombre del Archivo</Form.Label>
-        <Form.Control type="text" {...register("nombre", { required: true })} />
+        <Form.Control
+        id="formarch1" 
+        type="text" 
+        {...register("nombre", { required: true })} />
         {errors.nombre && <span>Requiere un Nombre</span>}
         <Form.Label>Seleccione el Archivo</Form.Label>
-        <Form.Control type="file" {...register("archivo", { touched: true })} />
+        <Form.Control 
+        id="formarch2"
+        type="file" 
+        {...register("archivo", { touched: true })} />
         <Button variant="primary" type="submit">
           Guardar
         </Button>

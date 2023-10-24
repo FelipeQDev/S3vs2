@@ -22,13 +22,13 @@ export function Navegacion() {
             <Nav.Link href="/bienvenida"><b>Inicio</b></Nav.Link>
             <NavDropdown title="Archivos" id="basic-nav-dropdown">
               <NavDropdown.Item href="archivos">Ver Archivos</NavDropdown.Item>
-              <NavDropdown.Item href="/crear-archivos">
+              <NavDropdown.Item href="/archivos-crear">
                 Crear Archivos
               </NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Datos" id="basic-nav-dropdown">
               <NavDropdown.Item href="/datos">Ver Datos</NavDropdown.Item>
-              <NavDropdown.Item href="/crear-datos">
+              <NavDropdown.Item href="/datos-crear">
                 Crear Datos
               </NavDropdown.Item>
             </NavDropdown>

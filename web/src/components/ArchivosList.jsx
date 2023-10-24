@@ -41,7 +41,6 @@ export function ArchivosList() {
               <td>
                 <RenderArchivos archivo={archivo} />
                 {archivo.nombre}
-
               </td>
               <td>
                 {archivo.archivo}

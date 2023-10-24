@@ -5,12 +5,15 @@ import Table from "react-bootstrap/Table";
 /* import Button from "react-bootstrap/Button"; */
 
 import { RenderDatos } from "./RenderDatos";
+import Button from "react-bootstrap/Button";
+import { useNavigate } from "react-router-dom";
 
 
 /* Listar Archivos */
 export function DatosList() {
   /* guardar primer elemento en datos y actualizar la lista */
   const [datos, setDatos] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     async function cargarDatos() {
       try {
@@ -30,6 +33,7 @@ export function DatosList() {
         <tr>
           <th>Nombre</th>
           <th>Descripcion</th>
+          <th>Editar/Borrar</th>
         </tr>
       </thead>
       {datos.map((dato) => (
@@ -37,6 +41,13 @@ export function DatosList() {
           <tr>
             <td><RenderDatos dato={dato} /></td>
             <td>{dato.descripcion}</td>
+            <td>
+              <Button onClick={() =>{
+                navigate(`/datos/${dato.id}`);
+              }} >
+                Accion
+              </Button>
+            </td>
           </tr>
         </tbody>
       ))}

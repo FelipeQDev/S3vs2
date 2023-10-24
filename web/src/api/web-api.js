@@ -7,27 +7,44 @@ const infoAPI = axios.create({
 });
 
 /* Archivos */
-export const getAllArchivos = () => infoAPI.get("archivos/");
+export const getAllArchivos = () => {
+  return infoAPI.get("archivos/");
+};
 
+export const getArchivo = (id) => {
+  return infoAPI.get(`/archivos/${id}/`);
+};
 
-export const getArchivo = (id) => infoAPI.get(`/archivos/${id}/`);
+export const createArchivo = (archivo) => {
+  return infoAPI.post("archivos/", archivo);
+};
 
+export const deleteArchivo = (id) => {
+  return infoAPI.delete(`/archivos/${id}/`);
+};
 
-export const createArchivo = (archivo) => infoAPI.post("archivos/", archivo);
-
-
-export const deleteArchivo = (id) => infoAPI.delete(`/archivos/${id}/`);
-
-export const updateArchivo = (id, archivo) => infoAPI.put(`/archivos/${id}`, archivo);
+export const updateArchivo = (id, archivo) => {
+  return infoAPI.put(`/archivos/${id}`, archivo);
+};
 
 /* Datos */
 
-export const getAllDatos = () => infoAPI.get("datos/");
+export const getAllDatos = () => {
+  return infoAPI.get("datos/");
+};
 
-export const getDato = () => infoAPI.get(`/datos/${id}/`);
+export const getDato = () => {
+  return infoAPI.get(`/datos/${id}/`);
+};
 
-export const createDato = (dato) => infoAPI.post("datos/", dato);
-  
-export const deleteDato = (id) => infoAPI.delete(`/datos/${id}/`);
-  
-export const updateDato = (id, dato) => infoAPI.put(`/datos/${id}`, dato);
+export const createDato = (dato) => {
+  return infoAPI.post("datos/", dato);
+};
+
+export const deleteDato = (id) => {
+  return infoAPI.delete(`/datos/${id}/`);
+};
+
+export const updateDato = (id, dato) => {
+  return infoAPI.put(`/datos/${id}`, dato);
+};

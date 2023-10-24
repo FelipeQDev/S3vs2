@@ -1,0 +1,20 @@
+body{
+    background: #fff;
+    color: #202020;
+}
+#formdato1 {
+    margin: 5px;
+    max-width: 250px;
+}
+#formdato2{
+    margin: 5px;
+    max-width: 450px;
+}
+#formarch1{
+    margin: 5px;
+    max-width: 300px;
+}
+#formarch2{
+    margin: 5px;
+    max-width: 500px;
+}

@@ -60,6 +60,7 @@ export function Bienvenida() {
           <div className="about-col">
             <h2>Felipe Quelín</h2>
             <p>Junior Developer</p>
+            <p>Alumno en Practica de Polodev</p>
           </div>
           <div className="links-col">
             <h2>Contactanos</h2>

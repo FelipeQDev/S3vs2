@@ -2,6 +2,7 @@ import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
 export function Navegacion() {
+  /* Navbar de Navegacion Frontend */
   return (
     <Nav className="navbar" fixed="top">
       <Nav.Item>
@@ -18,7 +19,7 @@ export function Navegacion() {
           Crear Archivos
         </NavDropdown.Item>
       </NavDropdown>
-
+{/* Botón desactivado */}
       <NavDropdown
         title="Datos"
         id="basic-nav-dropdown"

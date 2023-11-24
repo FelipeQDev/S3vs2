@@ -8,7 +8,7 @@ router = routers.DefaultRouter()
 router.register(r'archivos', views.ArchivosViews, 'archivos')
 router.register(r'datos', views.DatosViews, 'datos')
 
-
+''' URL Para documentacion del backend y los metedos get, post, put, delete '''
 # GET, POST, PUT, DELETE y documentacion
 urlpatterns = [
     path('api/v1/',include(router.urls)),

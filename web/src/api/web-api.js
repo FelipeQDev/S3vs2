@@ -1,5 +1,5 @@
 import axios from "axios";
-
+/* API del Frontend realizada con la libreria axios */
 const BASE_URL = "http://localhost:8000/inicio/api/v1";
 
 const infoAPI = axios.create({

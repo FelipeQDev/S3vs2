@@ -12,8 +12,9 @@ export default function App() {
   return (
     <div >
       <BrowserRouter>
+      {/* Navegacion entre Rutas*/}
         <Navegacion />
-        <Toaster />
+        {/* Rutas Frontend */}
         <Routes>
           <Route path="/" element={<Navigate to="/bienvenida" />} />
           <Route path="/bienvenida" element={<Bienvenida />} />
@@ -24,6 +25,8 @@ export default function App() {
           <Route path="/datos/:id" element={<DatosFormPage />} />
           <Route path="/datos-crear" element={<DatosFormPage />} />
         </Routes>
+        {/* Notificaciones Toast */}
+        <Toaster />
       </BrowserRouter>
     </div> 
   );

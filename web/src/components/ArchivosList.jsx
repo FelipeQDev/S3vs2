@@ -24,7 +24,7 @@ export function ArchivosList() {
     }
     cargarArchivos();
   }, []);
-
+/* Tabla archivos */
   return (
     <Table 
     striped bordered hover 
@@ -34,7 +34,7 @@ export function ArchivosList() {
         <tr>
           <th>Nombre</th>
           <th>Archivo</th>
-          <th>Editar/Borrar</th>
+          <th>Borrar</th>
         </tr>
       </thead>
       {archivos.map(archivo =>

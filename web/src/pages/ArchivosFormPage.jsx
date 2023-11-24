@@ -8,7 +8,7 @@ import {
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
-import { Toaster, toast } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 /* React-bootstrap */
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -22,7 +22,8 @@ export function ArchivosFormPage() {
   } = useForm();
   const navigate = useNavigate();
   const params = useParams();
-
+/* Utilizacion de useEffect, para que se reflejen los valores del archivo seleccionado 
+en el formulario, con botón acción */
   useEffect(() => {
     async function reflejarArchivos() {
       try {
@@ -39,7 +40,8 @@ export function ArchivosFormPage() {
     }
     reflejarArchivos();
   }, [params.id]);
-
+/* Creacion y Actualizacion de Archivo */
+/* Se agregan los Valores de nombre del archivo y el archivo en sí con append */
   const onSubmit = handleSubmit(async (data) => {
     const formData = new FormData();
     formData.append("nombre", data.nombre);
@@ -71,7 +73,10 @@ export function ArchivosFormPage() {
     }
     navigate("/archivos");
   });
-
+/* Formulario Archivo */
+/* Formulario con validaciones provenientes del metodo formState de react para espacios vacios */
+/* Botón para borrar el archivo, este solo aparece cumpliendoce el los condicionales, 
+si se presiona el botón acción en la tabla archivos, al cumplirse esa condicional, este aparecera bajo el boton guardar*/
   return (
     <Form onSubmit={onSubmit} encType="multipart/form-data">
       <Form.Group className="mb-3">

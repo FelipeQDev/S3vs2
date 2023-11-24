@@ -10,6 +10,7 @@ body {
   width: 100%;
   height: 100vh;
 }
+/* Page Bienvenida */
 .navbar{
   display: flex;
   align-items: center;
@@ -135,6 +136,7 @@ body {
   color: rgb(226, 82, 65);
   background-color: #fff;
 }
+/* Formulario Archivos */
 .mb-3 {
   width: 25%;
   display: flex;
@@ -147,6 +149,7 @@ body {
   margin-bottom: 1.1rem;
 }
 .mb-3 button{
+  margin: 5px;
   color: #1c1c1c;
   background-color: #fff;
   text-decoration: none;
@@ -182,6 +185,7 @@ body {
   box-shadow: 1px 1px 6px #0000001c;
   font-size: 0.8rem;
 }
+/* Footer Bienvenida */
 footer {
   position: relative;
   background: #c9c9c9;
@@ -256,6 +260,7 @@ footer .cols .links-col .phone {
   display: flex;
   align-items: center;
 }
+/* Responsive */
 @media screen and (max-width: 1330px) {
   .container {
       width: 50%;

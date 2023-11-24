@@ -30,7 +30,8 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+''' Aquí se instalan nuestras app necesarias para nuestro Backend RestFramework y los corsheaders para la autorizacion de nuestra URL del que conectará con el Frontend '''
+''' Apps instaladas: corsheaders, rest_framework, coreapi, app(nombre de nuestra app) '''
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,7 +45,7 @@ INSTALLED_APPS = [
     'app',
 
 ]
-
+''' instalación de corsheadres middlewer, MUY IMPORTANTE tiene qu estar sobre el middleware de Common '''
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -58,6 +59,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'api.urls'
 
+''' en este caso no se ocuparon templates, solo se ocupó Django como API backend '''
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -79,7 +81,8 @@ WSGI_APPLICATION = 'api.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
+''' En caso de querer usar otro tipo de base dato se cambia el Engignge por Mysql o otras '''
+''' Consiguiente se coloca el nombre de la Base de Dato '''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -132,11 +135,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #autorizacion de urls para el front end
 CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]
 
+''' Utilziación de coreapi para los Schema para la generacion de documentos de nuestro Backend '''
+
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
 }
 
+''' Utilización de lalibreria boto3 de para guardar archivos en el Bucket de AWS S3  '''
+
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+''' Credenciales simples del Bucket de S3, si se quiere añadir más se puede agregar más la documentación de AWS proporciona las configuraciones'''
 
 AWS_ACCESS_KEY_ID = 'AKIAS7KOOCDFNGJBDQFC'
 AWS_SECRET_ACCESS_KEY = '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'

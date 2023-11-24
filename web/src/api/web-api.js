@@ -15,8 +15,12 @@ export const getArchivo = (id) => {
   return infoAPI.get(`/archivos/${id}/`);
 };
 
-export const createArchivo = (archivo) => {
-  return infoAPI.post("archivos/", archivo);
+export const createArchivo = (formData) => {
+  return infoAPI.post("archivos/", formData,{
+    headers: {
+      'Content-Type':'multipart/form-data'
+    }
+  });
 };
 
 export const deleteArchivo = (id) => {
@@ -24,7 +28,11 @@ export const deleteArchivo = (id) => {
 };
 
 export const updateArchivo = (id, archivo) => {
-  return infoAPI.put(`/archivos/${id}`, archivo);
+  return infoAPI.put(`/archivos/${id}`, archivo, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  });
 };
 
 /* Datos */

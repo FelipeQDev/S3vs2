@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -137,7 +138,8 @@ REST_FRAMEWORK = {
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-AWS_ACCESS_KEY_ID = 'AKIAS7KOOCDFDPW4G5EX'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = 'AKIAS7KOOCDFNGJBDQFC'
+AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'django-static-python'
 AWS_QUERYSTRING_AUTH = False
+AWS_S3_REGION_NAME = 'us-east-1'

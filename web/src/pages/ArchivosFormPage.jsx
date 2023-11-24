@@ -8,7 +8,7 @@ import {
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
-import { toast } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
 /* React-bootstrap */
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -23,77 +23,95 @@ export function ArchivosFormPage() {
   const navigate = useNavigate();
   const params = useParams();
 
+  useEffect(() => {
+    async function reflejarArchivos() {
+      try {
+        if (params.id) {
+          const {
+            data: { nombre, archivo }
+          } = await getArchivo(params.id);
+          setValue("nombre", nombre);
+          setValue("archivo", archivo);
+        }
+      } catch (error) {
+        console.error("error al obtener arhicovs", error);
+      }
+    }
+    reflejarArchivos();
+  }, [params.id]);
+
   const onSubmit = handleSubmit(async (data) => {
-    if (params.id) {
-      await updateArchivo(params.id, data);
-      toast.success(
-        ("Archivo Actualizado",
-        {
-          position: "bottom-right",
+    const formData = new FormData();
+    formData.append("nombre", data.nombre);
+    formData.append("archivo", data.archivo[0]);
+    try {
+      if (params.id) {
+        await updateArchivo(params.id, data);
+        toast.success("Archivo Actualizado", {
+          position: "bottom-center",
           style: {
             borderRadius: "10px",
-            background: "#243B55",
-            color: "#ffff"
+            background: "#333",
+            color: "#fff"
           }
-        })
-      );
-    } else {
-      await createArchivo(data);
-      toast.success("Archivo Creado", {
-        position: "bottom-right",
-        style: {
-          borderRadius: "10px",
-          background: "#243B55",
-          color: "#ffff"
-        }
-      });
+        });
+      } else {
+        await createArchivo(formData);
+        toast.success("Archivo Creado", {
+          position: "bottom-center",
+          style: {
+            borderRadius: "10px",
+            background: "#333",
+            color: "#fff"
+          }
+        });
+      }
+    } catch (error) {
+      console.error("Error en handleSubmit:", error, data);
     }
     navigate("/archivos");
   });
 
-  useEffect(() => {
-    async function reflejarArchivos() {
-      if (params.id) {
-        const {
-          data: { nombre, archivo }
-        } = await getArchivo(params.id);
-        setValue("nombre", nombre);
-        setValue("archivo", archivo);
-      }
-    }
-    reflejarArchivos();
-  }, []);
-
   return (
-    <Form onSubmit={onSubmit}>
+    <Form onSubmit={onSubmit} encType="multipart/form-data">
       <Form.Group className="mb-3">
-        <Form.Label>Nombre del Archivo</Form.Label>
-        <Form.Control
-        id="formarch1" 
-        type="text" 
-        {...register("nombre", { required: true })} />
-        {errors.nombre && <span>Requiere un Nombre</span>}
-        <Form.Label>Seleccione el Archivo</Form.Label>
-        <Form.Control 
-        id="formarch2"
-        type="file" 
-        {...register("archivo", { touched: true })} />
+        {errors.nombre && (
+          <span>
+            <b>Requiere un Nombre</b>
+          </span>
+        )}
+
+          <Form.Control
+            className="formarch1"
+            type="text"
+            {...register("nombre", { required: true })}
+          />
+          {errors.archivo && (
+            <span>
+              <b>Necesita seleccionar un Archivo</b>
+            </span>
+          )}
+          <Form.Control
+            className="formarch2"
+            type="file"
+            {...register("archivo", { touched: true })}
+          />
         <Button variant="primary" type="submit">
           Guardar
         </Button>
-        {errors.archivo && <span>Necesita seleccionar un Archivo</span>}
         {params.id && (
           <Button
+            id="botonborrar"
             onClick={async () => {
               const confirmacion = window.confirm("Desea Eliminarlo?");
               if (confirmacion) {
                 await deleteArchivo(params.id);
                 toast.error("Archivo Eliminado", {
-                  position: "bottom-right",
+                  position: "bottom-center",
                   style: {
                     borderRadius: "10px",
-                    background: "#ffff",
-                    color: "#243B55"
+                    background: "#333",
+                    color: "#fff"
                   }
                 });
               }

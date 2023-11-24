@@ -11,11 +11,7 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 
 export function DatosFormPage() {
-  const { 
-    egister, 
-    handleSubmit, 
-    setValue } 
-    = useForm();
+  const { register, handleSubmit, setValue } = useForm();
 
   const navigate = useNavigate();
   const params = useParams();
@@ -33,8 +29,8 @@ export function DatosFormPage() {
       });
     } else {
       await createDato(data);
-      toast.success("Dato Creado", {
-        position: "bottom-center",
+      toast.success("Nuevo Archivo Creado", {
+        position: "bottom-right",
         style: {
           borderRadius: "10px",
           background: "#243B55",

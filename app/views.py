@@ -4,10 +4,14 @@ from .models import Archivos, Datos
 # Create your views here.
 
 class ArchivosViews(viewsets.ModelViewSet):
-    serializer_class = ArchivosSerializer
     queryset = Archivos.objects.all()
+    serializer_class = ArchivosSerializer
+    
+    def perform_create(self, serializer):
+        serializer.save(archivo=self.request.data.get('archivo'))
+        
 
 
 class DatosViews(viewsets.ModelViewSet):
-    serializer_class = DatosSerializer
     queryset = Datos.objects.all()
+    serializer_class = DatosSerializer

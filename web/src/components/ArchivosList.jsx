@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { getAllArchivos } from "../api/web-api";
 /* React-bootstrap */
-import Table from 'react-bootstrap/Table';
+import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 
 import { RenderArchivos } from "./RenderArchivos";
-import { Link, useNavigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 /* Listar Archivos */
 export function ArchivosList() {
@@ -27,33 +26,39 @@ export function ArchivosList() {
   }, []);
 
   return (
-    <Table striped bordered hover>
+    <Table 
+    striped bordered hover 
+    className="tabla_archivos"
+    >
       <thead>
         <tr>
           <th>Nombre</th>
-          <th>Ruta de Alojaminto</th>
+          <th>Archivo</th>
           <th>Editar/Borrar</th>
         </tr>
       </thead>
-      {archivos.map((archivo) => (
-          <tbody key={archivo.id}>
-            <tr>
-              <td>
-                <RenderArchivos archivo={archivo} />
-                {archivo.nombre}
-              </td>
-              <td>
-                {archivo.archivo}
-              </td>
-              <td>
-                <Button onClick={() => {
+      {archivos.map(archivo =>
+        <tbody key={archivo.id}>
+          <tr>
+            <td>
+              <RenderArchivos archivo={archivo} />
+              {archivo.nombre}
+            </td>
+            <td>
+              <a href={archivo.archivo} target="_blank"> Ver Archivo</a>
+            </td>
+            <td>
+              <Button
+                onClick={() => {
                   navigate(`/archivos/${archivo.id}`);
-                }}>Accion</Button>
-              </td>      
-            </tr>
-          </tbody>
-        ))
-      }
+                }}
+              >
+                Acción
+              </Button>
+            </td>
+          </tr>
+        </tbody>
+      )}
     </Table>
   );
 }

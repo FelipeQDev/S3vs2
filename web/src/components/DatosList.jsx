@@ -28,7 +28,10 @@ export function DatosList() {
   }, []);
 
   return (
-    <Table striped bordered hover>
+    <Table 
+    striped bordered hover variant="dark"
+    className="tabla_datos"
+    >
       <thead>
         <tr>
           <th>Nombre</th>
